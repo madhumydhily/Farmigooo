@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "810812840033",
+    "project_id": "farmigooo",
+    "storage_bucket": "farmigooo.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:810812840033:android:8526f8be9d8c1e5c1b3220",
+        "android_client_info": {
+          "package_name": "com.farmigo.farmigo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcuBZwniw7Ydg5lpfRbOL46A2maUOljFk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

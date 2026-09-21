@@ -1,0 +1,49 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isUser(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isValidImage() {
+      return request.resource.contentType.matches('image/.*')
+        && request.resource.size < 10 * 1024 * 1024; // 10MB max
+    }
+
+    // User profiles & avatars
+    match /users/{userId}/{allPaths=**} {
+      allow read: if isAuthenticated();
+      allow write: if isUser(userId) && isValidImage();
+    }
+
+    // Land parcel images
+    match /lands/{userId}/{allPaths=**} {
+      allow read: if isAuthenticated();
+      allow write: if isUser(userId) && isValidImage();
+    }
+
+    // Machinery & equipment images
+    match /machinery/{userId}/{allPaths=**} {
+      allow read: if isAuthenticated();
+      allow write: if isUser(userId) && isValidImage();
+    }
+
+    // Produce marketplace product images
+    match /products/{userId}/{allPaths=**} {
+      allow read: if isAuthenticated();
+      allow write: if isUser(userId) && isValidImage();
+    }
+
+    // Agriculture updates images
+    match /updates/{userId}/{allPaths=**} {
+      allow read: if isAuthenticated();
+      allow write: if isUser(userId) && isValidImage();
+    }
+  }
+}
